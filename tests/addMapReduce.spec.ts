@@ -5,7 +5,7 @@ import { AddMapReduce } from '../src/addMapReduce';
 const amrInstance: AddMapReduce = new AddMapReduce([1, 2, 3], (val: number) => {
   val = val + 1;
   return val;
-})
+});
 describe('AddMapReduce class methods tested with a AddMapReduce class instance', () => {
   describe('Testing map', () => {
     it('amrInstance.map should be [2, 3, 4]', () => {
