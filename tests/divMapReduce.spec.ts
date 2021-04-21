@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import { DivMapReduce } from '../src/divMapReduce';
 
 const dmrInstance: DivMapReduce =
-  new DivMapReduce([4, 2, 1], (val: number) => {
+  new DivMapReduce([0, 1, 3], (val: number) => {
     val = val + 1;
     return val;
   });
