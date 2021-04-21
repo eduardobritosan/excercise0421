@@ -1,12 +1,12 @@
 /**
  * Tipo de callback para map
  */
-type MapCallback = (n: number) => number;
+export type MapCallback = (n: number) => number;
 /**
  * Base template class for ArrayMethods
  */
 export abstract class ArrayMethods {
-  constructor(protected array: number[]) {
+  constructor(protected array: number[], private cb: MapCallback) {
   }
 
   /**
@@ -28,13 +28,22 @@ export abstract class ArrayMethods {
    * @description Runs function passed to the
    * @returns the array after the operation has been made
    */
-  public map(cb: MapCallback): number[] {
+  public map(): number[] {
     const result: number[] = [];
     this.getArray().forEach((val) => {
-      result.push(cb(val));
+      result.push(this.cb(val));
     });
     return result;
   }
 
-  protected abstract reduce(): number
+  /**
+   * @description the template method
+   */
+  public run(): number {
+    const mapArray = this.map();
+    const reduceResult = this.reduce(mapArray);
+    return reduceResult;
+  }
+
+  protected abstract reduce(n: number[]): number;
 }

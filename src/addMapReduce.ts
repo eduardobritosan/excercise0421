@@ -1,21 +1,17 @@
-import { ArrayMethods } from './arrayMethods';
+import { ArrayMethods, MapCallback } from './arrayMethods';
 
 export class AddMapReduce extends ArrayMethods {
-  constructor(array: number[]) {
-    super(array);
+  constructor(array: number[], cb: MapCallback) {
+    super(array, cb);
   }
 
-  public reduce(): number {
-    return 0;
-  }
 
-  // public reduce(): number {
-  //   const mapArray = this.map((val) => {
-  //     val = val + 1;
-  //   });
-  //   const acc = 0;
-  //   mapArray.forEach((val) => {
-  //     acc
-  //   })
-  // }
+  public reduce(n: number[]): number {
+    let acc = 0;
+    const mapArray = this.map();
+    mapArray.forEach((val) => {
+      acc = acc + val;
+    });
+    return acc;
+  }
 }
